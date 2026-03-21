@@ -102,3 +102,5 @@ InitTestScene*.unity*
 
 /Builds
 /Builds/*
+Assets/Resources/Config/
+Assets/Resources/Config/*
