@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
-using Oculus.Platform;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -42,16 +41,19 @@ public class GroqClient : MonoBehaviour
         - ❄️ Ice (blue) = cold, numb, or dull ache  
         - 🪨 Rock (grey) = pressure, heaviness, or stiffness
         - ⚡ Thunder (yellow) = tingling, electric, or shooting sensation
+        
+        Keep in mind that the child may misunderstand what the symbols represent
 
         The child's markings:
         " + paintData.ToPromptString() + @"
 
         Your job:
-        1. Ask ONE simple, friendly  yes no question at a time (like Akinator)
+        1. Ask ONE very short simple, friendly  yes/no question at a time (like Akinator)
         2. Questions must be clinically grounded — target symptom duration, triggers, associated symptoms
-        3. Keep language fun and Spider-Man themed but medically purposeful
+        3. Keep language fun and possibly a little Spider-Man themed but medically purposeful
         4. After 6-8 questions, output a JSON block like:
-        {""summary"": ""..."", ""possible_paths"": [""...""], ""flags"": [""...""]}
+        SPIDEY: <a short fun spider-man goodbye line, max 20 words, says Spidey's friend the doctor will come to continue where needed>
+        JSON: {""summary"": ""..."", ""possible_paths"": [""...""], ""flags"": [""...""]}
         5. Never diagnose — only surface patterns for the doctor.
         Start by acknowledging what you see and asking your first question.";
 
@@ -85,7 +87,8 @@ public class GroqClient : MonoBehaviour
             string assistantMessage = response.choices[0].message.content;
 
             conversationHistory.Add(new Message {role = "assistant", content = assistantMessage});
-
+            
+            Debug.Log("VRO RIGHT HERE VRO:"+assistantMessage);
             onResponse?.Invoke(assistantMessage);
         }
         else
