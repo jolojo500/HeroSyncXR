@@ -16,11 +16,18 @@ public class GameFlowManager : MonoBehaviour
 
     private bool waitForAnswer = false;
 
+/*
     void Start()
     {
         currentPaintData = new BodyPaintData{zones = testZones};
 
         groqClient.InitializeConversation(currentPaintData);
+        StartCoroutine(BeginSession());
+    }*/
+    // New method called by BodyDataCollector:
+    public void StartSession(BodyPaintData paintData)
+    {
+        groqClient.InitializeConversation(paintData);
         StartCoroutine(BeginSession());
     }
 
