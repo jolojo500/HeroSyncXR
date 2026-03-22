@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>HeroSync — Doctor Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface2: #1a1a26;
+    --border: #2a2a3d;
+    --red: #e5383b;
+    --red-dim: rgba(229,56,59,0.15);
+    --text: #e8e8f0;
+    --muted: #6b6b8a;
+    --green: #4ade80;
+    --yellow: #fbbf24;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Mono', monospace;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* LOGIN */
+  #login-screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(ellipse at 60% 40%, #1a0a0f 0%, #0a0a0f 70%);
+  }
+  .login-card {
+    width: 380px;
+    padding: 48px 40px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--red);
+    position: relative;
+  }
+  .login-card::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: 50%; transform: translateX(-50%);
+    width: 60px; height: 2px;
+    background: var(--red);
+    box-shadow: 0 0 20px var(--red);
+  }
+  .logo { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; margin-bottom: 6px; }
+  .logo span { color: var(--red); }
+  .login-sub { color: var(--muted); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 36px; }
+  label { display: block; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  input {
+    width: 100%; padding: 12px 14px;
+    background: var(--bg); border: 1px solid var(--border);
+    color: var(--text); font-family: 'DM Mono', monospace; font-size: 14px;
+    margin-bottom: 20px; outline: none; transition: border-color .2s;
+  }
+  input:focus { border-color: var(--red); }
+  .btn-primary {
+    width: 100%; padding: 13px;
+    background: var(--red); border: none; color: white;
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px;
+    letter-spacing: 1px; text-transform: uppercase; cursor: pointer;
+    transition: opacity .2s, box-shadow .2s;
+  }
+  .btn-primary:hover { opacity: .85; box-shadow: 0 0 24px rgba(229,56,59,.4); }
+  .btn-primary:disabled { opacity: .4; cursor: not-allowed; }
+  #login-error { color: var(--red); font-size: 12px; margin-top: 12px; min-height: 16px; }
+
+  /* DASHBOARD */
+  #dashboard-screen { display: none; min-height: 100vh; }
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 32px; border-bottom: 1px solid var(--border);
+    background: var(--surface); position: sticky; top: 0; z-index: 10;
+  }
+  .topbar-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; }
+  .topbar-logo span { color: var(--red); }
+  .topbar-right { display: flex; align-items: center; gap: 20px; }
+  #session-count { font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+  .btn-logout {
+    background: none; border: 1px solid var(--border); color: var(--muted);
+    font-family: 'DM Mono', monospace; font-size: 11px; padding: 7px 14px;
+    cursor: pointer; letter-spacing: 1px; transition: all .2s;
+  }
+  .btn-logout:hover { border-color: var(--red); color: var(--red); }
+  .main-layout { display: grid; grid-template-columns: 320px 1fr; min-height: calc(100vh - 61px); }
+
+  /* SESSION LIST */
+  .session-list { border-right: 1px solid var(--border); overflow-y: auto; }
+  .list-header {
+    padding: 20px 24px 14px; font-size: 10px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--muted);
+    border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px;
+  }
+  .pulse { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+  .session-item {
+    padding: 18px 24px; border-bottom: 1px solid var(--border);
+    cursor: pointer; transition: background .15s;
+  }
+  .session-item:hover { background: var(--surface2); }
+  .session-item.active { background: var(--red-dim); border-left: 2px solid var(--red); }
+  .session-id { font-size: 12px; font-weight: 500; margin-bottom: 5px; }
+  .session-time { font-size: 10px; color: var(--muted); letter-spacing: .5px; }
+  .session-zones { display: flex; gap: 4px; margin-top: 8px; flex-wrap: wrap; }
+  .zone-tag { font-size: 9px; padding: 2px 7px; border-radius: 2px; letter-spacing: .5px; text-transform: uppercase; }
+  .tag-fire    { background: rgba(239,68,68,.2);   color: #f87171; }
+  .tag-ice     { background: rgba(96,165,250,.2);  color: #93c5fd; }
+  .tag-rock    { background: rgba(161,161,170,.2); color: #a1a1aa; }
+  .tag-thunder { background: rgba(251,191,36,.2);  color: #fcd34d; }
+  #no-sessions { padding: 40px 24px; text-align: center; color: var(--muted); font-size: 12px; line-height: 1.8; }
+  #loading-sessions { padding: 40px 24px; text-align: center; color: var(--muted); font-size: 12px; }
+
+  /* REPORT PANEL */
+  .report-panel { padding: 36px 40px; overflow-y: auto; }
+  #empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--muted); text-align: center; gap: 12px; }
+  .empty-icon { font-size: 48px; opacity: .3; }
+  .empty-text { font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+  #report-content { display: none; }
+  .report-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+  .report-title { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+  .report-meta { font-size: 11px; color: var(--muted); }
+  .btn-acknowledge {
+    padding: 11px 22px; background: none; border: 1px solid var(--red); color: var(--red);
+    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 1px;
+    text-transform: uppercase; cursor: pointer; transition: all .2s; white-space: nowrap;
+  }
+  .btn-acknowledge:hover { background: var(--red); color: white; box-shadow: 0 0 20px rgba(229,56,59,.3); }
+  .section-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+  .summary-box { background: var(--surface2); border: 1px solid var(--border); border-left: 3px solid var(--red); padding: 20px 24px; margin-bottom: 28px; font-size: 14px; line-height: 1.7; }
+  .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
+  .info-card { background: var(--surface2); border: 1px solid var(--border); padding: 20px; }
+  .info-card-title { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .info-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .info-card li { font-size: 13px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+  .info-card li::before { content: '→'; color: var(--red); flex-shrink: 0; margin-top: 1px; }
+  .flags-list li::before { content: '⚑'; color: var(--yellow); }
+  .zones-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; margin-bottom: 28px; }
+  .zone-card { background: var(--surface2); border: 1px solid var(--border); padding: 14px 16px; }
+  .zone-name { font-size: 12px; font-weight: 500; text-transform: capitalize; margin-bottom: 6px; }
+  .zone-type { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .intensity-bar { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .intensity-fill { height: 100%; border-radius: 2px; }
+  .raw-toggle { font-size: 10px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; cursor: pointer; background: none; border: none; padding: 0; margin-bottom: 10px; text-decoration: underline; text-underline-offset: 3px; }
+  .raw-toggle:hover { color: var(--text); }
+  #raw-json { display: none; background: var(--bg); border: 1px solid var(--border); padding: 16px; font-size: 11px; line-height: 1.7; color: var(--muted); white-space: pre-wrap; word-break: break-all; max-height: 300px; overflow-y: auto; }
+
+  @media (max-width: 768px) {
+    .main-layout { grid-template-columns: 1fr; }
+    .session-list { border-right: none; border-bottom: 1px solid var(--border); max-height: 280px; }
+    .report-panel { padding: 24px 20px; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .topbar { padding: 14px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="login-screen">
+  <div class="login-card">
+    <div class="logo">Hero<span>Sync</span></div>
+    <div class="login-sub">Medical Portal</div>
+    <label>Email</label>
+    <input type="email" id="email" placeholder="doctor@hospital.com" />
+    <label>Password</label>
+    <input type="password" id="password" placeholder="••••••••" />
+    <button class="btn-primary" id="login-btn" onclick="doLogin()">Access Dashboard</button>
+    <div id="login-error"></div>
+  </div>
+</div>
+
+<div id="dashboard-screen">
+  <div class="topbar">
+    <div class="topbar-logo">Hero<span>Sync</span></div>
+    <div class="topbar-right">
+      <span id="session-count">— sessions pending</span>
+      <button class="btn-logout" onclick="doLogout()">Sign out</button>
+    </div>
+  </div>
+  <div class="main-layout">
+    <div class="session-list">
+      <div class="list-header"><div class="pulse"></div>Pending sessions</div>
+      <div id="loading-sessions">Loading...</div>
+      <div id="no-sessions" style="display:none">No pending sessions.<br/>Reports are deleted after<br/>the doctor acknowledges them.</div>
+      <div id="sessions-container"></div>
+    </div>
+    <div class="report-panel">
+      <div id="empty-state">
+        <div class="empty-icon">🕸️</div>
+        <div class="empty-text">Select a session to view report</div>
+      </div>
+      <div id="report-content">
+        <div class="report-header">
+          <div>
+            <div class="report-title" id="report-title">Session</div>
+            <div class="report-meta" id="report-meta"></div>
+          </div>
+          <button class="btn-acknowledge" onclick="acknowledgeSession()">✓ Acknowledge &amp; Delete</button>
+        </div>
+        <div class="section-label">Summary</div>
+        <div class="summary-box" id="report-summary"></div>
+        <div class="section-label">Body Zones</div>
+        <div class="zones-grid" id="report-zones"></div>
+        <div class="cards-grid">
+          <div class="info-card">
+            <div class="info-card-title">Possible Paths</div>
+            <ul id="report-paths"></ul>
+          </div>
+          <div class="info-card">
+            <div class="info-card-title">Flags</div>
+            <ul id="report-flags" class="flags-list"></ul>
+          </div>
+        </div>
+        <button class="raw-toggle" onclick="toggleRaw()">Show raw JSON</button>
+        <pre id="raw-json"></pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged }
+  from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+import { getFirestore, collection, onSnapshot, doc, deleteDoc, query, orderBy }
+  from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+
+const app  = initializeApp({
+  apiKey: "AIzaSyCy8FCO5ksgPJbmp2CQbODNbjZwErXdHZc",
+  authDomain: "herosync-76c50.firebaseapp.com",
+  projectId: "herosync-76c50",
+  storageBucket: "herosync-76c50.firebasestorage.app",
+  messagingSenderId: "472183187972",
+  appId: "1:472183187972:web:36f779d787c309f762e351"
+});
+const auth = getAuth(app);
+const db   = getFirestore(app);
+
+let sessions = {};
+let activeSessionId = null;
+let unsubscribeSessions = null;
+
+// AUTH
+window.doLogin = async () => {
+  const btn   = document.getElementById('login-btn');
+  const err   = document.getElementById('login-error');
+  const email = document.getElementById('email').value.trim();
+  const pass  = document.getElementById('password').value;
+
+  if (!email || !pass) {
+    err.textContent = 'Please enter email and password.';
+    return;
+  }
+  btn.disabled = true;
+  err.textContent = '';
+  try {
+    await signInWithEmailAndPassword(auth, email, pass);
+  } catch(e) {
+    const messages = {
+      'auth/invalid-credential':     'Invalid email or password.',
+      'auth/user-not-found':         'No account found.',
+      'auth/wrong-password':         'Invalid email or password.',
+      'auth/network-request-failed': 'Network error. Check your connection.',
+      'auth/too-many-requests':      'Too many attempts. Try again later.',
+    };
+    err.textContent = messages[e.code] || `Login failed. (${e.code})`;
+    btn.disabled = false;
+  }
+};
+
+window.doLogout = async () => {
+  if (unsubscribeSessions) unsubscribeSessions();
+  await signOut(auth);
+};
+
+onAuthStateChanged(auth, user => {
+  if (user) {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('dashboard-screen').style.display = 'block';
+    loadSessions();
+  } else {
+    document.getElementById('login-screen').style.display = 'flex';
+    document.getElementById('dashboard-screen').style.display = 'none';
+    document.getElementById('login-btn').disabled = false;
+  }
+});
+
+// SESSIONS
+function loadSessions() {
+  const q = query(collection(db, 'sessions'), orderBy('timestamp', 'desc'));
+  unsubscribeSessions = onSnapshot(q, snapshot => {
+    sessions = {};
+    snapshot.forEach(d => { sessions[d.id] = { id: d.id, ...d.data() }; });
+    renderSessionList();
+  }, error => {
+    document.getElementById('loading-sessions').textContent =
+      'Failed to load sessions. Refresh the page.';
+    console.error('Firestore error:', error);
+  });
+}
+
+function renderSessionList() {
+  const container  = document.getElementById('sessions-container');
+  const loading    = document.getElementById('loading-sessions');
+  const noSessions = document.getElementById('no-sessions');
+  const countEl    = document.getElementById('session-count');
+
+  loading.style.display = 'none';
+  container.innerHTML   = '';
+
+  const keys = Object.keys(sessions);
+  countEl.textContent = `${keys.length} session${keys.length !== 1 ? 's' : ''} pending`;
+
+  if (keys.length === 0) { noSessions.style.display = 'block'; return; }
+  noSessions.style.display = 'none';
+
+  keys.forEach(id => {
+    const s   = sessions[id];
+    const div = document.createElement('div');
+    div.className = 'session-item' + (id === activeSessionId ? ' active' : '');
+    div.onclick = () => showSession(id);
+
+    let zonesHtml = '';
+    try {
+      const parsed = JSON.parse(s.report);
+      if (parsed.zones) {
+        zonesHtml = parsed.zones.slice(0,4).map(z =>
+          `<span class="zone-tag tag-${z.symptomType}">${z.zone}</span>`
+        ).join('');
+      }
+    } catch(e) {}
+
+    const ts = s.timestamp ? new Date(s.timestamp).toLocaleString() : 'Unknown time';
+    div.innerHTML = `
+      <div class="session-id">Session #${id.slice(-6).toUpperCase()}</div>
+      <div class="session-time">${ts}</div>
+      <div class="session-zones">${zonesHtml}</div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+// REPORT
+window.showSession = (id) => {
+  activeSessionId = id;
+  renderSessionList();
+
+  const s = sessions[id];
+  document.getElementById('empty-state').style.display    = 'none';
+  document.getElementById('report-content').style.display = 'block';
+  document.getElementById('report-title').textContent = `Session #${id.slice(-6).toUpperCase()}`;
+  document.getElementById('report-meta').textContent  =
+    s.timestamp ? `Received: ${new Date(s.timestamp).toLocaleString()}` : '';
+
+  let report = {};
+  try { report = JSON.parse(s.report); } catch(e) {}
+
+  document.getElementById('report-summary').textContent = report.summary || 'No summary available.';
+
+  const zonesEl = document.getElementById('report-zones');
+  zonesEl.innerHTML = '';
+  (report.zones || []).forEach(z => {
+    const colorMap = { fire:'#ef4444', ice:'#60a5fa', rock:'#a1a1aa', thunder:'#fbbf24' };
+    const color = colorMap[z.symptomType] || '#e5383b';
+    zonesEl.innerHTML += `
+      <div class="zone-card">
+        <div class="zone-name">${z.zone}</div>
+        <div class="zone-type" style="color:${color}">${z.symptomType}</div>
+        <div class="intensity-bar">
+          <div class="intensity-fill" style="width:${(z.intensity*100).toFixed(0)}%;background:${color}"></div>
+        </div>
+      </div>`;
+  });
+
+  const pathsEl = document.getElementById('report-paths');
+  pathsEl.innerHTML = '';
+  (report.possible_paths || []).forEach(p => { pathsEl.innerHTML += `<li>${p}</li>`; });
+  if (!pathsEl.children.length) pathsEl.innerHTML = '<li style="color:var(--muted)">None reported</li>';
+
+  const flagsEl = document.getElementById('report-flags');
+  flagsEl.innerHTML = '';
+  (report.flags || []).forEach(f => { flagsEl.innerHTML += `<li>${f}</li>`; });
+  if (!flagsEl.children.length) flagsEl.innerHTML = '<li style="color:var(--muted)">No flags</li>';
+
+  document.getElementById('raw-json').textContent = JSON.stringify(report, null, 2);
+};
+
+window.toggleRaw = () => {
+  const el  = document.getElementById('raw-json');
+  const btn = document.querySelector('.raw-toggle');
+  const visible = el.style.display === 'block';
+  el.style.display = visible ? 'none' : 'block';
+  btn.textContent  = visible ? 'Show raw JSON' : 'Hide raw JSON';
+};
+
+window.acknowledgeSession = async () => {
+  if (!activeSessionId) return;
+  if (!confirm('Mark as reviewed and permanently delete this session?')) return;
+  try {
+    await deleteDoc(doc(db, 'sessions', activeSessionId));
+    activeSessionId = null;
+    document.getElementById('report-content').style.display = 'none';
+    document.getElementById('empty-state').style.display    = 'flex';
+  } catch(e) {
+    alert('Failed to delete. Check your connection and try again.');
+    console.error(e);
+  }
+};
+
+document.getElementById('password').addEventListener('keydown', e => {
+  if (e.key === 'Enter') window.doLogin();
+});
+</script>
+</body>
+</html>
