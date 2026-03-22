@@ -98,3 +98,29 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+
+/Builds
+/Builds/*
+Assets/Resources/Config/
+Assets/Resources/Config/*
+
+# Unity auto-generated asset files
+Assets/Resources/OVROverlayCanvasSettings.asset
+Assets/Resources/OVROverlayCanvasSettings.asset.meta
+Assets/Resources/OVRBuildConfig.asset
+Assets/Resources/OVRBuildConfig.asset.meta
+Assets/Oculus/OculusProjectConfig.asset
+Assets/Oculus/OculusProjectConfig.asset.meta
+Assets/XR/Settings/OpenXR Package Settings.asset
+Assets/XR/Settings/OpenXR Package Settings.asset.meta
+Assets/Settings/Mobile_RPAsset.asset
+Assets/Settings/Mobile_RPAsset.asset.meta
+Assets/Settings/UniversalRenderPipelineGlobalSettings.asset
+Assets/Settings/UniversalRenderPipelineGlobalSettings.asset.meta
+
+# Project Settings auto-generated
+ProjectSettings/ShaderGraphSettings.asset
+ProjectSettings/EditorBuildSettings.asset
+ProjectSettings/GraphicsSettings.asset
+ProjectSettings/ProjectSettings.asset
