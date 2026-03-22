@@ -9,11 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/Ai.unity
-    guid: 2e73c13e1abd65846a0e5f6254eaeff6
+    path: Assets/Scenes/HeroSelection.unity
+    guid: 0f453e787c56afb4db0462b3a526993b
+  - enabled: 1
+    path: Assets/Scenes/Mahmoud.unity
+    guid: 49c33ee1660c826419b2e0d8a265cfe5
   - enabled: 1
     path: Assets/Scenes/Mouad.unity
     guid: 4e7093df5b48cc642a3ba9c601b9e750
+  - enabled: 1
+    path: Assets/Scenes/Ai.unity
+    guid: 2e73c13e1abd65846a0e5f6254eaeff6
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 1b8b4928629ed7e4787b1cf1f238499b, type: 2}

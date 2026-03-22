@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class SpiderIntro : MonoBehaviour
 {
@@ -31,15 +32,25 @@ public class SpiderIntro : MonoBehaviour
     public float pauseBetweenLines = 0.1f;
     public float ttsStartTimeout   = 5f;
 
-    private readonly string[] lines =
-    {
-        "Ouch! Okay... note to self: brick walls are harder than they look. Hey! Perfect timing, I really need a hand here.",
-        "Listen, my suit took a serious hit during a fight earlier and it's acting all glitchy. But here's the crazy part: it's actually synced up to YOUR vitals right now!",
-        "Science, right? Basically, if you're feeling a sting, a burn, or a heavy feeling anywhere, my suit is picking it up as a system error on my holographic twin here.",
-        "I need you to be my Tech-Hero. Use your web-shooter to paint exactly where the suit is acting up on my model. Then, pick the emoji that matches what you're feeling.",
-        "You help me pinpoint the glitches, and we'll get this suit fixed in no time. Ready to save the day, partner? Your friendly neighborhood Spider-Man is counting on you!"
-    };
+//   private readonly string[] lines =
+// {
+//     "Ouch! Note to self: brick walls are harder than they look. *Web-zip sound* Hey! Perfect timing, I really need a hand here.",
+    
+//     "My suit's glitching after a fight, and get this: it's synced to YOUR vitals. If you feel a sting, a burn, or a heavy feeling, my suit records it as a system error.",
+    
+//     "You’re my Tech-Hero today. Paint the glitches on my model and pick the symbol that matches what you feel. You're the only one who can help me fix this.",
+    
+//     "Wait! That's the guy who did this! I have to go now, partner. I'm still a bit banged up, but a real hero never stops until the city is safe...",
+    
+//     "...And I know you won't stop either. I’m trusting you to finish the diagnostic on your own. You’ve got this! I’ll call you back as soon as I’ve webbed up the bad guy.",
+    
+//     "Stay brave, hero. Your friendly neighborhood Spider-Man is counting on you! Spider-Man out!"
+// };
 
+private readonly string[] lines =
+{
+    "Hey! I gotta go. You got this, hero!"
+};
     private enum State { WaitingToStart, PlayingIntro, Storytelling, Finished }
     private State     _state    = State.WaitingToStart;
     private Coroutine _sequence;
@@ -90,11 +101,13 @@ public class SpiderIntro : MonoBehaviour
         if (OVRInput.GetDown(OVRInput.Button.Two))   resetPressed = true; // B
         if (OVRInput.GetDown(OVRInput.Button.Four))  resetPressed = true; // Y
 
-        if (startPressed && _state == State.WaitingToStart)
-            _sequence = StartCoroutine(RunFullSequence());
-
         if (resetPressed)
             RestartAll();
+    }
+
+    void Start()
+    {
+        _sequence = StartCoroutine(RunFullSequence());
     }
 
     private IEnumerator RunFullSequence()
@@ -136,7 +149,7 @@ public class SpiderIntro : MonoBehaviour
         yield return StartCoroutine(RunStorytelling());
 
         _state = State.Finished;
-        Debug.Log("[SpiderIntro] Terminé. B ou Y pour recommencer.");
+        SceneManager.LoadScene("Mouad");
     }
 
     private IEnumerator FadeOutMusic(float delay, float fadeDuration)

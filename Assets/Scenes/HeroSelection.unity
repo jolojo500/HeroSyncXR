@@ -747,6 +747,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 635336084}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &74265460 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3903482225804038116, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
+  m_PrefabInstance: {fileID: 79972760}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &74265466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74265460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c87cc04154be40289252bc1880e4c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneChanger
 --- !u!1 &77796771
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,6 +890,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4148778239110795873, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
       insertIndex: 1
       addedObject: {fileID: 79972763}
+    - targetCorrespondingSourceObject: {fileID: 3903482225804038116, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 74265466}
   m_SourcePrefab: {fileID: 100100000, guid: 0a7d2469f24041c4284c66706f84c45e, type: 3}
 --- !u!4 &79972761 stripped
 Transform:
@@ -9633,31 +9653,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7d23b3be5f13d54aa5e10d2a33d0105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  heroSprites:
-  - {fileID: 1795362382, guid: c83388e8b6f244345bc6107bfbab9a67, type: 3}
-  - {fileID: 1006837772, guid: 55d78daa6541f5245a6563665c57fd99, type: 3}
-  - {fileID: -2076857552, guid: 545e765e354eba341b1dfd77fa0d26b5, type: 3}
-  heroNames:
-  - Super Man
-  - Spider Man
-  - Wonder Woman
-  leftHeroImage: {fileID: 748141072}
-  centerHeroImage: {fileID: 513405330}
-  rightHeroImage: {fileID: 1865081088}
-  leftBorder: {fileID: 1968554117}
-  centerBorder: {fileID: 1624709647}
-  rightBorder: {fileID: 1284304756}
-  leftSlot: {fileID: 1577670181}
-  centerSlot: {fileID: 1004375885}
-  rightSlot: {fileID: 1710535818}
-  heroNameText: {fileID: 808199484}
-  selectedColor: {r: 1, g: 0, b: 0, a: 1}
-  unselectedColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
-  lockedTint: {r: 0.4, g: 0.4, b: 0.4, a: 1}
-  selectedTint: {r: 1, g: 1, b: 1, a: 1}
-  centerScale: 1.4
-  sideScale: 0.85
-  scaleSpeed: 8
 --- !u!1 &1698543967
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class VRPainter : MonoBehaviour
 {
@@ -6,7 +7,9 @@ public class VRPainter : MonoBehaviour
     public BrushSettings brush;
     public LayerMask paintableLayer;
 
+
     LineRenderer _line;
+
 
     void Awake()
     {
@@ -33,6 +36,8 @@ public class VRPainter : MonoBehaviour
             OVRInput.Controller.RTouch
         );
 
+        if (OVRInput.GetDown(OVRInput.Button.One))
+            SceneManager.LoadScene("Ai");
         if (Physics.Raycast(ray, out RaycastHit hit, 10f, paintableLayer))
         {
             // Ligne du contrôleur jusqu'au point de contact
