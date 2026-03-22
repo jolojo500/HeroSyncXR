@@ -39,21 +39,22 @@ public class GameFlowManager : MonoBehaviour
             string json= message.Split("JSON:")[1].Trim();
             Debug.Log("VRO RIGHT HERE VRO:"+spideyLine);
             Debug.Log("AND HERE:"+json);
-            dialogueUI.ShowSpideyGoodbye(spideyLine);
-            dialogueUI.ShowFinalSummary(json);
+            if (dialogueUI != null) dialogueUI.ShowSpideyGoodbye(spideyLine);
+            if (dialogueUI != null) dialogueUI.ShowFinalSummary(json);
             StartCoroutine(firebaseClient.SendReport(json, currentPaintData));
 
             return;
         }
         Debug.Log("VRO we got somem answer VRO:"+message);
 
+        if (dialogueUI != null) 
         dialogueUI.ShowQuestion(message, onYes: () => OnChildAnswer("Yes"),
                                           onNo:  () => OnChildAnswer("No"));
     }
 
-    void OnChildAnswer(string answer)
+    public void OnChildAnswer(string answer)
     {
-        dialogueUI.HideButtons();
+        if (dialogueUI != null) dialogueUI.HideButtons(); // ← add null check
         StartCoroutine(groqClient.SendMessage(answer, OnQuestionReceived));
     }
 
