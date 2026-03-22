@@ -104,3 +104,12 @@ InitTestScene*.unity*
 /Builds/*
 Assets/Resources/Config/
 Assets/Resources/Config/*
+
+# Unity auto-generated
+Assets/Oculus/OculusProjectConfig.asset
+Assets/Oculus/OculusProjectConfig.asset.meta
+Assets/XR/Settings/OpenXR Package Settings.asset
+Assets/XR/Settings/OpenXR Package Settings.asset.meta
+ProjectSettings/ShaderGraphSettings.asset
+Assets/Resources/OVROverlayCanvasSettings.asset
+Assets/Resources/OVROverlayCanvasSettings.asset.meta

@@ -895,6 +895,7 @@ GameObject:
   - component: {fileID: 1632088678}
   - component: {fileID: 1632088677}
   - component: {fileID: 1632088676}
+  - component: {fileID: 1632088679}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -935,6 +936,7 @@ MonoBehaviour:
   - zone: left leg
     symptomType: Ice
     intensity: 0.4
+  firebaseClient: {fileID: 1632088679}
 --- !u!4 &1632088678
 Transform:
   m_ObjectHideFlags: 0
@@ -950,6 +952,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1632088679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632088675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2485182177d648a4c9307e252cd72475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FirebaseClient
 --- !u!1 &1663806180
 GameObject:
   m_ObjectHideFlags: 0
