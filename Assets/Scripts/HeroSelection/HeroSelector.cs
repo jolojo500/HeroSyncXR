@@ -29,6 +29,8 @@ public class HeroSelector : MonoBehaviour
     [Header("Colors")]
     public Color selectedColor = Color.red;
     public Color unselectedColor = new Color(0.4f, 0.4f, 0.4f);
+    public Color lockedTint = new Color(0.4f, 0.4f, 0.4f, 1f);
+    public Color selectedTint = Color.white;
 
     [Header("Carousel Scales")]
     public float centerScale = 1.4f;
@@ -40,7 +42,6 @@ public class HeroSelector : MonoBehaviour
     private int centerIndex = 0;
     private bool isScrolling = false;
 
-    // Target scales for smooth animation
     private Vector3 targetLeftScale;
     private Vector3 targetCenterScale;
     private Vector3 targetRightScale;
@@ -64,31 +65,20 @@ public class HeroSelector : MonoBehaviour
     {
         float input = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).x;
 
-        if (input > 0.5f && !isScrolling)
-        {
-            GoRight();
-            isScrolling = true;
-        }
-        else if (input < -0.5f && !isScrolling)
-        {
-            GoLeft();
-            isScrolling = true;
-        }
-        else if (Mathf.Abs(input) < 0.2f)
-        {
-            isScrolling = false;
-        }
+        // Keyboard fallback for testing in editor
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) GoLeft();
+        if (Input.GetKeyDown(KeyCode.RightArrow)) GoRight();
+        if (Input.GetKeyDown(KeyCode.Return)) ConfirmSelection();
 
-        // Right controller trigger to confirm
-        if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
-        {
-            ConfirmSelection();
-        }
+        if (input > 0.5f && !isScrolling) { GoRight(); isScrolling = true; }
+        else if (input < -0.5f && !isScrolling) { GoLeft(); isScrolling = true; }
+        else if (Mathf.Abs(input) < 0.2f) { isScrolling = false; }
+
+        if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger)) ConfirmSelection();
     }
 
     void AnimateScales()
     {
-        // Smoothly lerp all three slots to their target scales
         leftSlot.localScale = Vector3.Lerp(
             leftSlot.localScale, targetLeftScale, Time.deltaTime * scaleSpeed);
         centerSlot.localScale = Vector3.Lerp(
@@ -99,36 +89,30 @@ public class HeroSelector : MonoBehaviour
 
     public void GoLeft()
     {
-        if (centerIndex > 0)
-        {
-            centerIndex--;
-            UpdateCarousel();
-        }
+        if (centerIndex > 0) { centerIndex--; UpdateCarousel(); }
     }
 
     public void GoRight()
     {
-        if (centerIndex < heroSprites.Length - 1)
-        {
-            centerIndex++;
-            UpdateCarousel();
-        }
+        if (centerIndex < heroSprites.Length - 1) { centerIndex++; UpdateCarousel(); }
     }
 
     void UpdateCarousel()
     {
-        // --- Center slot (always visible) ---
+        // Center slot
         centerHeroImage.sprite = heroSprites[centerIndex];
-        heroNameText.text = heroNames[centerIndex];
+        centerHeroImage.color = selectedTint;
         centerBorder.color = selectedColor;
+        heroNameText.text = heroNames[centerIndex];
         targetCenterScale = Vector3.one * centerScale;
 
-        // --- Left slot ---
+        // Left slot
         if (centerIndex - 1 >= 0)
         {
             leftHeroImage.sprite = heroSprites[centerIndex - 1];
-            leftSlot.gameObject.SetActive(true);
+            leftHeroImage.color = lockedTint;
             leftBorder.color = unselectedColor;
+            leftSlot.gameObject.SetActive(true);
             targetLeftScale = Vector3.one * sideScale;
         }
         else
@@ -136,12 +120,13 @@ public class HeroSelector : MonoBehaviour
             leftSlot.gameObject.SetActive(false);
         }
 
-        // --- Right slot ---
+        // Right slot
         if (centerIndex + 1 < heroSprites.Length)
         {
             rightHeroImage.sprite = heroSprites[centerIndex + 1];
-            rightSlot.gameObject.SetActive(true);
+            rightHeroImage.color = lockedTint;
             rightBorder.color = unselectedColor;
+            rightSlot.gameObject.SetActive(true);
             targetRightScale = Vector3.one * sideScale;
         }
         else
@@ -153,6 +138,5 @@ public class HeroSelector : MonoBehaviour
     public void ConfirmSelection()
     {
         Debug.Log("Hero selected: " + heroNames[centerIndex]);
-        // Add scene transition here later
     }
 }
