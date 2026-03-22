@@ -62,4 +62,30 @@ public class PaintableSurface : MonoBehaviour
     {
         if (_canvas) Destroy(_canvas);
     }
+
+    // Returns the dominant non-white color painted, or Color.clear if untouched
+    public Color GetDominantColor()
+    {
+        if (_canvas == null) return Color.clear;
+
+        Color[] pixels = _canvas.GetPixels();
+        float r = 0, g = 0, b = 0;
+        int painted = 0;
+
+        foreach (var p in pixels)
+        {
+            // skip white (unpainted) pixels
+            if (p.r > 0.9f && p.g > 0.9f && p.b > 0.9f) continue;
+            r += p.r; g += p.g; b += p.b;
+            painted++;
+        }
+
+        if (painted == 0) return Color.clear; // untouched
+        return new Color(r / painted, g / painted, b / painted);
+    }
+
+    public bool IsPainted()
+    {
+        return GetDominantColor() != Color.clear;
+    }
 }

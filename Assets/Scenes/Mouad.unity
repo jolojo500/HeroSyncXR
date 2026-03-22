@@ -542,8 +542,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 57033138}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.719, y: -0.798, z: 11.087}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.85761, y: -1.77395, z: 11.29506}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -569,7 +569,7 @@ Transform:
   - {fileID: 124896529}
   - {fileID: 1893435666}
   - {fileID: 1523782868}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1434421586}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &65443755
 GameObject:
@@ -1071,6 +1071,7 @@ GameObject:
   - component: {fileID: 124896533}
   - component: {fileID: 124896532}
   - component: {fileID: 124896531}
+  - component: {fileID: 124896537}
   m_Layer: 3
   m_Name: LForearm
   m_TagString: Paintable
@@ -1237,6 +1238,18 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
+--- !u!114 &124896537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124896528}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881565fba3845644fa9e5ae0ce73ad90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintBlock
 --- !u!1 &133524057
 GameObject:
   m_ObjectHideFlags: 0
@@ -1978,6 +1991,7 @@ GameObject:
   - component: {fileID: 194475609}
   - component: {fileID: 194475608}
   - component: {fileID: 194475607}
+  - component: {fileID: 194475613}
   m_Layer: 3
   m_Name: RFeet
   m_TagString: Paintable
@@ -2144,6 +2158,18 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
+--- !u!114 &194475613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194475604}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881565fba3845644fa9e5ae0ce73ad90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintBlock
 --- !u!1 &195753117
 GameObject:
   m_ObjectHideFlags: 0
@@ -2634,6 +2660,7 @@ GameObject:
   - component: {fileID: 249244377}
   - component: {fileID: 249244376}
   - component: {fileID: 249244375}
+  - component: {fileID: 249244381}
   m_Layer: 3
   m_Name: Neck
   m_TagString: Paintable
@@ -2800,6 +2827,18 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
+--- !u!114 &249244381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249244372}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881565fba3845644fa9e5ae0ce73ad90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintBlock
 --- !u!1 &273213835
 GameObject:
   m_ObjectHideFlags: 0
@@ -3003,6 +3042,8 @@ GameObject:
   - component: {fileID: 299895203}
   - component: {fileID: 299895202}
   - component: {fileID: 299895201}
+  - component: {fileID: 299895207}
+  - component: {fileID: 299895208}
   m_Layer: 3
   m_Name: Head
   m_TagString: Paintable
@@ -3169,6 +3210,31 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
+--- !u!114 &299895207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299895198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c75d0cd4596b8e641a431f20ace58831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintableSurface
+  textureSize: 1024
+--- !u!114 &299895208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299895198}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881565fba3845644fa9e5ae0ce73ad90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintBlock
 --- !u!1 &310736846
 GameObject:
   m_ObjectHideFlags: 0
@@ -3546,6 +3612,52 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00616638, y: -0.030066561, z: -0.020585023}
     m_Extent: {x: 0.033926036, y: 0.041736547, z: 0.054627255}
   m_DirtyAABB: 0
+--- !u!1 &355638742
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 355638743}
+  - component: {fileID: 355638744}
+  m_Layer: 0
+  m_Name: ColorSwitcher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &355638743
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355638742}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1434421586}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &355638744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355638742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff5857336a484a428f43451ea528ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ColorSwitcher
+  brush: {fileID: 11400000, guid: a9ce43e7e52ea2c478954a01bc7e6c66, type: 2}
+  colorLabel: {fileID: 0}
 --- !u!1 &363357108
 GameObject:
   m_ObjectHideFlags: 0
@@ -3725,7 +3837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _monoscopic: 0
   _sharpenType: 0
-  _enableDynamicResolution: 0
+  _enableDynamicResolution: 1
   minDynamicResolutionScale: 1
   maxDynamicResolutionScale: 1
   quest2MinDynamicResolutionScale: 0.7
@@ -3780,7 +3892,7 @@ MonoBehaviour:
   requestBodyTrackingPermissionOnStartup: 0
   requestFaceTrackingPermissionOnStartup: 0
   requestEyeTrackingPermissionOnStartup: 0
-  requestScenePermissionOnStartup: 0
+  requestScenePermissionOnStartup: 1
   requestRecordAudioPermissionOnStartup: 0
   requestPassthroughCameraAccessPermissionOnStartup: 0
   _localDimming: 1
@@ -4422,6 +4534,7 @@ GameObject:
   - component: {fileID: 440812875}
   - component: {fileID: 440812874}
   - component: {fileID: 440812873}
+  - component: {fileID: 440812879}
   m_Layer: 3
   m_Name: RHand
   m_TagString: Paintable
@@ -4589,6 +4702,18 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
+--- !u!114 &440812879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440812870}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881565fba3845644fa9e5ae0ce73ad90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintBlock
 --- !u!1 &440883335
 GameObject:
   m_ObjectHideFlags: 0
@@ -4636,6 +4761,7 @@ GameObject:
   - component: {fileID: 451402693}
   - component: {fileID: 451402692}
   - component: {fileID: 451402691}
+  - component: {fileID: 451402697}
   m_Layer: 3
   m_Name: Hip
   m_TagString: Paintable
@@ -4802,6 +4928,18 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
+--- !u!114 &451402697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451402688}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881565fba3845644fa9e5ae0ce73ad90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintBlock
 --- !u!1 &451935815
 GameObject:
   m_ObjectHideFlags: 0
@@ -6373,6 +6511,7 @@ GameObject:
   - component: {fileID: 674437010}
   - component: {fileID: 674437009}
   - component: {fileID: 674437016}
+  - component: {fileID: 674437017}
   m_Layer: 3
   m_Name: LThigh
   m_TagString: Paintable
@@ -6539,6 +6678,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1a0d51e35efaf4a9d06005492ee7c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CubeUnwrapper
+--- !u!114 &674437017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674437008}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881565fba3845644fa9e5ae0ce73ad90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintBlock
 --- !u!1 &684308390
 GameObject:
   m_ObjectHideFlags: 0
@@ -10302,6 +10453,7 @@ GameObject:
   - component: {fileID: 1112521071}
   - component: {fileID: 1112521070}
   - component: {fileID: 1112521069}
+  - component: {fileID: 1112521075}
   m_Layer: 3
   m_Name: Abdomen
   m_TagString: Paintable
@@ -10468,6 +10620,18 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
+--- !u!114 &1112521075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112521066}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881565fba3845644fa9e5ae0ce73ad90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintBlock
 --- !u!1 &1121271545
 GameObject:
   m_ObjectHideFlags: 0
@@ -10808,6 +10972,7 @@ GameObject:
   - component: {fileID: 1153787728}
   - component: {fileID: 1153787727}
   - component: {fileID: 1153787726}
+  - component: {fileID: 1153787732}
   m_Layer: 3
   m_Name: LElbow
   m_TagString: Paintable
@@ -10974,6 +11139,18 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
+--- !u!114 &1153787732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153787723}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881565fba3845644fa9e5ae0ce73ad90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintBlock
 --- !u!1 &1168836577
 GameObject:
   m_ObjectHideFlags: 0
@@ -10990,6 +11167,7 @@ GameObject:
   - component: {fileID: 1168836582}
   - component: {fileID: 1168836581}
   - component: {fileID: 1168836580}
+  - component: {fileID: 1168836586}
   m_Layer: 3
   m_Name: RThigh
   m_TagString: Paintable
@@ -11156,6 +11334,18 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
+--- !u!114 &1168836586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168836577}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881565fba3845644fa9e5ae0ce73ad90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintBlock
 --- !u!1 &1185045716
 GameObject:
   m_ObjectHideFlags: 0
@@ -11595,6 +11785,7 @@ GameObject:
   - component: {fileID: 1217158357}
   - component: {fileID: 1217158356}
   - component: {fileID: 1217158355}
+  - component: {fileID: 1217158361}
   m_Layer: 3
   m_Name: LHand
   m_TagString: Paintable
@@ -11762,6 +11953,18 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
+--- !u!114 &1217158361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217158352}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881565fba3845644fa9e5ae0ce73ad90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintBlock
 --- !u!1 &1223791076
 GameObject:
   m_ObjectHideFlags: 0
@@ -11778,6 +11981,7 @@ GameObject:
   - component: {fileID: 1223791081}
   - component: {fileID: 1223791080}
   - component: {fileID: 1223791079}
+  - component: {fileID: 1223791085}
   m_Layer: 3
   m_Name: LUpper arm
   m_TagString: Paintable
@@ -11944,6 +12148,18 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
+--- !u!114 &1223791085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223791076}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881565fba3845644fa9e5ae0ce73ad90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintBlock
 --- !u!1 &1239195985
 GameObject:
   m_ObjectHideFlags: 0
@@ -12852,6 +13068,7 @@ GameObject:
   - component: {fileID: 1316711160}
   - component: {fileID: 1316711159}
   - component: {fileID: 1316711161}
+  - component: {fileID: 1316711162}
   m_Layer: 3
   m_Name: LFeet
   m_TagString: Paintable
@@ -13018,6 +13235,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1a0d51e35efaf4a9d06005492ee7c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CubeUnwrapper
+--- !u!114 &1316711162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316711153}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881565fba3845644fa9e5ae0ce73ad90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintBlock
 --- !u!1 &1317710793
 GameObject:
   m_ObjectHideFlags: 0
@@ -13818,6 +14047,7 @@ GameObject:
   - component: {fileID: 1401641725}
   - component: {fileID: 1401641724}
   - component: {fileID: 1401641731}
+  - component: {fileID: 1401641732}
   m_Layer: 3
   m_Name: LKnee
   m_TagString: Paintable
@@ -13984,6 +14214,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1a0d51e35efaf4a9d06005492ee7c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CubeUnwrapper
+--- !u!114 &1401641732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401641723}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881565fba3845644fa9e5ae0ce73ad90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintBlock
 --- !u!1 &1403524007
 GameObject:
   m_ObjectHideFlags: 0
@@ -14304,6 +14546,7 @@ GameObject:
   - component: {fileID: 1427515743}
   - component: {fileID: 1427515742}
   - component: {fileID: 1427515741}
+  - component: {fileID: 1427515747}
   m_Layer: 3
   m_Name: RShoulder
   m_TagString: Paintable
@@ -14470,6 +14713,18 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
+--- !u!114 &1427515747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427515738}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881565fba3845644fa9e5ae0ce73ad90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintBlock
 --- !u!1 &1432201416
 GameObject:
   m_ObjectHideFlags: 0
@@ -14646,6 +14901,39 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1433965116}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1434421585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1434421586}
+  m_Layer: 0
+  m_Name: PaintingRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1434421586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434421585}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.13861, y: 0.97595, z: -0.20806}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 57033139}
+  - {fileID: 355638743}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1441741924
 GameObject:
   m_ObjectHideFlags: 0
@@ -15224,6 +15512,7 @@ GameObject:
   - component: {fileID: 1523782872}
   - component: {fileID: 1523782871}
   - component: {fileID: 1523782870}
+  - component: {fileID: 1523782876}
   m_Layer: 3
   m_Name: RUpper arm
   m_TagString: Paintable
@@ -15390,6 +15679,18 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
+--- !u!114 &1523782876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523782867}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881565fba3845644fa9e5ae0ce73ad90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintBlock
 --- !u!1 &1526104443
 GameObject:
   m_ObjectHideFlags: 0
@@ -17654,6 +17955,7 @@ GameObject:
   - component: {fileID: 1750847146}
   - component: {fileID: 1750847145}
   - component: {fileID: 1750847144}
+  - component: {fileID: 1750847150}
   m_Layer: 3
   m_Name: RKnee
   m_TagString: Paintable
@@ -17820,6 +18122,18 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
+--- !u!114 &1750847150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750847141}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881565fba3845644fa9e5ae0ce73ad90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintBlock
 --- !u!1 &1767141675
 GameObject:
   m_ObjectHideFlags: 0
@@ -18884,6 +19198,7 @@ GameObject:
   - component: {fileID: 1893435670}
   - component: {fileID: 1893435669}
   - component: {fileID: 1893435668}
+  - component: {fileID: 1893435674}
   m_Layer: 3
   m_Name: RForearm
   m_TagString: Paintable
@@ -19050,6 +19365,18 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
+--- !u!114 &1893435674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893435665}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881565fba3845644fa9e5ae0ce73ad90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintBlock
 --- !u!1 &1893476533
 GameObject:
   m_ObjectHideFlags: 0
@@ -19066,6 +19393,7 @@ GameObject:
   - component: {fileID: 1893476538}
   - component: {fileID: 1893476537}
   - component: {fileID: 1893476536}
+  - component: {fileID: 1893476542}
   m_Layer: 3
   m_Name: RElbow
   m_TagString: Paintable
@@ -19232,6 +19560,18 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
+--- !u!114 &1893476542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893476533}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881565fba3845644fa9e5ae0ce73ad90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintBlock
 --- !u!1 &1894376281
 GameObject:
   m_ObjectHideFlags: 0
@@ -19248,6 +19588,7 @@ GameObject:
   - component: {fileID: 1894376286}
   - component: {fileID: 1894376285}
   - component: {fileID: 1894376284}
+  - component: {fileID: 1894376290}
   m_Layer: 3
   m_Name: LShoulder
   m_TagString: Paintable
@@ -19414,6 +19755,18 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
+--- !u!114 &1894376290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894376281}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881565fba3845644fa9e5ae0ce73ad90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintBlock
 --- !u!1 &1897483540
 GameObject:
   m_ObjectHideFlags: 0
@@ -19799,6 +20152,7 @@ GameObject:
   - component: {fileID: 1917028417}
   - component: {fileID: 1917028416}
   - component: {fileID: 1917028423}
+  - component: {fileID: 1917028424}
   m_Layer: 3
   m_Name: LShin
   m_TagString: Paintable
@@ -19965,6 +20319,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1a0d51e35efaf4a9d06005492ee7c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CubeUnwrapper
+--- !u!114 &1917028424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917028415}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881565fba3845644fa9e5ae0ce73ad90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintBlock
 --- !u!1 &1917721091
 GameObject:
   m_ObjectHideFlags: 0
@@ -20246,6 +20612,7 @@ GameObject:
   - component: {fileID: 1948870411}
   - component: {fileID: 1948870410}
   - component: {fileID: 1948870409}
+  - component: {fileID: 1948870415}
   m_Layer: 3
   m_Name: RShin
   m_TagString: Paintable
@@ -20412,6 +20779,18 @@ MonoBehaviour:
   installationRoutineCheckpoint:
     _installationRoutineId: 
     _installationVariants: []
+--- !u!114 &1948870415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948870406}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881565fba3845644fa9e5ae0ce73ad90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintBlock
 --- !u!1 &1949929239
 GameObject:
   m_ObjectHideFlags: 0
@@ -22383,4 +22762,4 @@ SceneRoots:
   - {fileID: 142514301}
   - {fileID: 2080103983}
   - {fileID: 1928786702}
-  - {fileID: 57033139}
+  - {fileID: 1434421586}

@@ -41,11 +41,9 @@ public class VRPainter : MonoBehaviour
 
             // Couleur de la ligne = couleur du brush quand on appuie
             _line.startColor = trigger
-                ? new Color(brush.brushColor.r, brush.brushColor.g, brush.brushColor.b, 0.9f)
-                : new Color(1f, 1f, 1f, 0.6f);
-            _line.endColor = trigger
-                ? brush.brushColor
-                : new Color(1f, 0.3f, 0.3f, 1f);
+             ? new Color(brush.brushColor.r, brush.brushColor.g, brush.brushColor.b, 0.9f)
+             : new Color(brush.brushColor.r, brush.brushColor.g, brush.brushColor.b, 0.4f);
+            _line.endColor = brush.brushColor;
 
             // Peindre si gâchette enfoncée
             if (trigger && hit.collider.CompareTag("Paintable"))
@@ -60,8 +58,11 @@ public class VRPainter : MonoBehaviour
             // Rien touché — ligne droite de longueur fixe
             _line.SetPosition(0, ray.origin);
             _line.SetPosition(1, ray.origin + ray.direction * 3f);
-            _line.startColor = new Color(1f, 1f, 1f, 0.3f);
-            _line.endColor = new Color(1f, 1f, 1f, 0.1f);
+            _line.startColor = new Color(brush.brushColor.r, brush.brushColor.g, brush.brushColor.b, 0.4f);
+            _line.endColor   = new Color(brush.brushColor.r, brush.brushColor.g, brush.brushColor.b, 0.8f);
         }
     }
+
+    void OnEnable()  => _line.enabled = true;
+void OnDisable() => _line.enabled = false;
 }
