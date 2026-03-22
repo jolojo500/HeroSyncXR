@@ -152,6 +152,15 @@
   .raw-toggle:hover { color: var(--text); }
   #raw-json { display: none; background: var(--bg); border: 1px solid var(--border); padding: 16px; font-size: 11px; line-height: 1.7; color: var(--muted); white-space: pre-wrap; word-break: break-all; max-height: 300px; overflow-y: auto; }
 
+  .qa-item { 
+    padding: 12px 16px; 
+    border-bottom: 1px solid var(--border); 
+    font-size: 13px;
+    line-height: 1.6;
+}
+.qa-q { color: var(--muted); margin-bottom: 4px; font-size: 11px; letter-spacing: .5px; }
+.qa-a { color: var(--text); }
+
   @media (max-width: 768px) {
     .main-layout { grid-template-columns: 1fr; }
     .session-list { border-right: none; border-bottom: 1px solid var(--border); max-height: 280px; }
@@ -206,6 +215,8 @@
         </div>
         <div class="section-label">Summary</div>
         <div class="summary-box" id="report-summary"></div>
+        <div class="section-label">Questions & Answers</div>
+        <div id="report-qa" style="margin-bottom:28px"></div>
         <div class="section-label">Body Zones</div>
         <div class="zones-grid" id="report-zones"></div>
         <div class="cards-grid">
@@ -363,7 +374,16 @@ window.showSession = (id) => {
   try { report = JSON.parse(s.report); } catch(e) {}
 
   document.getElementById('report-summary').textContent = report.summary || 'No summary available.';
-
+  // After report-summary block, add Q&A section
+  const qaEl = document.getElementById('report-qa');
+  qaEl.innerHTML = '';
+  (report.questions_and_answers || []).forEach((item, i) => {
+      qaEl.innerHTML += `
+          <div class="qa-item">
+              <div class="qa-q">Q${i+1}: ${item.q}</div>
+              <div class="qa-a">→ ${item.a}</div>
+          </div>`;
+  });
   const zonesEl = document.getElementById('report-zones');
   zonesEl.innerHTML = '';
   (report.zones || []).forEach(z => {
