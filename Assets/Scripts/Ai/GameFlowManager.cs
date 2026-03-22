@@ -10,15 +10,17 @@ public class GameFlowManager : MonoBehaviour
 
     [Header("Test Data - fill in inspector")]
     public List<BodyZone> testZones; //to test hardcoded
-    
+
+    public FirebaseClient firebaseClient;
+    private BodyPaintData currentPaintData;   
 
     private bool waitForAnswer = false;
 
     void Start()
     {
-        var paintData = new BodyPaintData{zones = testZones};
+        currentPaintData = new BodyPaintData{zones = testZones};
 
-        groqClient.InitializeConversation(paintData);
+        groqClient.InitializeConversation(currentPaintData);
         StartCoroutine(BeginSession());
     }
 
@@ -39,6 +41,8 @@ public class GameFlowManager : MonoBehaviour
             Debug.Log("AND HERE:"+json);
             dialogueUI.ShowSpideyGoodbye(spideyLine);
             dialogueUI.ShowFinalSummary(json);
+            StartCoroutine(firebaseClient.SendReport(json, currentPaintData));
+
             return;
         }
         Debug.Log("VRO we got somem answer VRO:"+message);
